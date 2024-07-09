@@ -8,12 +8,13 @@ import TwitterContext from "./components/TwitterContext.jsx";
 
 function App() {
   const [tweets, setTweets] = useState(defaultTweets);
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     theme === "light"
       ? (document.body.style.backgroundColor = "white")
       : (document.body.style.backgroundColor = "black");
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
